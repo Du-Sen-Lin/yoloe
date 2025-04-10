@@ -20,7 +20,9 @@ def init_model(model_id, is_pf=False):
 
 @smart_inference_mode()
 def yoloe_inference(image, prompts, target_image, model_id, image_size, conf_thresh, iou_thresh, prompt_type):
+    print(f"-------------------------")
     model = init_model(model_id)
+    print(f"------------ok-------------")
     kwargs = {}
     if prompt_type == "Text":
         texts = prompts["texts"]
@@ -388,4 +390,6 @@ with gradio_app:
             app()
 
 if __name__ == '__main__':
-    gradio_app.launch(allowed_paths=["figures"])
+    # gradio_app.launch(allowed_paths=["figures"])
+    # gradio_app.launch(allowed_paths=["figures"], share=True)
+    gradio_app.launch(allowed_paths=["figures"], server_name="0.0.0.0", server_port=9360, share=True)

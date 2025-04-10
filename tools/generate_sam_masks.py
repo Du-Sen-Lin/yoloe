@@ -150,7 +150,9 @@ def generate_mask_annos(model: SAM2ImagePredictor, rank, total, image_path: Path
     
 def worker(args):
     device, rank, total, image_path, annotation_path, batch = args
-    sam2_checkpoint = "sam2/checkpoints/sam2.1_hiera_large.pt"
+    # sam2_checkpoint = "sam2/checkpoints/sam2.1_hiera_large.pt"
+    # model_cfg = "configs/sam2.1/sam2.1_hiera_l.yaml"
+    sam2_checkpoint = "/root/project/research/Yolo/yoloe/third_party/sam2/checkpoints/sam2.1_hiera_large.pt"
     model_cfg = "configs/sam2.1/sam2.1_hiera_l.yaml"
     
     os.environ["CUDA_VISIBLE_DEVICES"] = device
@@ -185,7 +187,7 @@ def main(args):
         json.dump(data, f)
 
 if __name__ == '__main__':
-    assert(torch.__version__ == "2.5.1+cu124")
+    # assert(torch.__version__ == "2.5.1+cu124")
     args = parse_args()
     print(vars(args))
     main(args)

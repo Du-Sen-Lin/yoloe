@@ -1,0 +1,25 @@
+path: /root/dataset/OpenSet_Data/glass_data_20250317/glass_train_vps
+# path: /root/project/research/Yolo/datasets/glass_train_vps
+train: null # train images (relative to 'path') 128 images
+val: images # val images (relative to 'path') 128 images
+test: null
+
+# Classes
+names:
+  0: bracket component
+  1: sliding sleeve
+  2: elastic bridge
+  3: fastening screw
+  4: fastening nut
+  5: small adjustment block
+  6: large adjustment block
+  
+# names:
+#   0: obj
+#   1: 滑套
+#   2: 弹桥
+#   3: 螺丝
+#   4: 螺母
+#   5: 调节块
+#   6: 调节块2
+

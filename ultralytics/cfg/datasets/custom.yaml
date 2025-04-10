@@ -1,0 +1,12 @@
+path: /root/dataset/glass_data_20250317
+train: images/train
+val: images/train
+test: null
+names:
+  0: bracket component
+  1: sliding sleeve
+  2: elastic bridge
+  3: fastening screw
+  4: fastening nut
+  5: small adjustment block
+  6: large adjustment block

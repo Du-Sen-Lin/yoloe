@@ -9,10 +9,15 @@ from tqdm import tqdm
 if __name__ == '__main__':
     random.seed(0)
 
-    lvis_path = "../datasets/lvis"
+    # lvis_path = "../datasets/lvis"
+    # lvis_train_path = f"{lvis_path}/train.txt"
+    
+    # visual_prompt_cache_path = Path("../datasets/lvis_train_vps")
+
+    lvis_path = "/root/dataset/OpenSet_Data/glass_data_20250317"
     lvis_train_path = f"{lvis_path}/train.txt"
     
-    visual_prompt_cache_path = Path("../datasets/lvis_train_vps")
+    visual_prompt_cache_path = Path("/root/dataset/OpenSet_Data/glass_data_20250317/glass_train_vps")
 
     shutil.rmtree(visual_prompt_cache_path / "images", ignore_errors=True)
     shutil.rmtree(visual_prompt_cache_path / "labels", ignore_errors=True)
@@ -23,8 +28,11 @@ if __name__ == '__main__':
         lines = [line.strip() for line in f.readlines()]
     
     im_files = [str(Path(lvis_path) / f) for f in lines]
+    # label_files = [f.replace("images", "labels").replace( \
+    #     "jpg", "txt") for f in im_files]
+
     label_files = [f.replace("images", "labels").replace( \
-        "jpg", "txt") for f in im_files]
+        "bmp", "txt") for f in im_files]    
     
     cls_file_map = defaultdict(list)
     file_label_map = {}
@@ -56,9 +64,10 @@ if __name__ == '__main__':
             cls = np.array([int(label.split()[0]) for label in labels])
             index = (cls == c)
             valid_labels = np.array(labels)[index].tolist()
-            shutil.copy(file, visual_prompt_cache_path / "images" / f"{sample_id}.jpg")
+            # shutil.copy(file, visual_prompt_cache_path / "images" / f"{sample_id}.jpg")
+            shutil.copy(file, visual_prompt_cache_path / "images" / f"{sample_id}.bmp")
             with open(visual_prompt_cache_path / "labels" / f"{sample_id}.txt", "w") as f:
                 f.write("\n".join(valid_labels))
             sample_id += 1
     
-    assert(sample_id == 15098)
+    # assert(sample_id == 15098)
